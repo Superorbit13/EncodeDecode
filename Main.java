@@ -4,21 +4,26 @@ public class Main implements ActionListener {
     JTextField modAlpha, inputText;
     JFrame f;
     JButton encode, decode;
-    JLabel outputLabel;
+    JLabel outputLabel, l1, l2;
     Main() {
         f = new JFrame("Encode-Decode");
         encode = new JButton("Encode");
         decode = new JButton("Decode");
         modAlpha = new JTextField();
         inputText = new JTextField();
-        outputLabel = new JLabel("Test text");
+        outputLabel = new JLabel();
+        l1 = new JLabel("Input a custom alphabet 26 characters in length here:");
+        l2 = new JLabel("Input the text to be encoded or decoded here:");
 
         f.setSize(400,400);
-        encode.setBounds(200, 120, 100, 30);
-        decode.setBounds(50, 120, 100, 30);
+        encode.setBounds(200, 200, 100, 30);
+        decode.setBounds(50, 200, 100, 30);
         modAlpha.setBounds(50,50, 150,20);
-        inputText.setBounds(50,70, 150,20);
-        outputLabel.setBounds(20,200, 300,30);
+        inputText.setBounds(50,150, 150,20);
+        outputLabel.setBounds(50,300, 300,30);
+        l1.setBounds(10,10, 300, 30);
+        l2.setBounds(10,100, 300,30);
+
 
         encode.addActionListener(this);
         decode.addActionListener(this);
@@ -28,6 +33,8 @@ public class Main implements ActionListener {
         f.add(modAlpha);
         f.add(inputText);
         f.add(outputLabel);
+        f.add(l1);
+        f.add(l2);
         f.setLayout(null);
         f.setVisible(true);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
