@@ -1,19 +1,29 @@
 import java.awt.event.*;
 import javax.swing.*;
+
+/**
+ * This class allows a user to give a string of 26 characters as a custom alphabet and some text.
+ * The text can then be encoded or decoded based off of the button pressed.
+ * The output is then displayed in a label.
+ */
 public class Main implements ActionListener {
-    JTextField modAlpha, inputText;
-    JFrame f;
-    JButton encode, decode;
-    JLabel outputLabel, l1, l2;
-    Main() {
-        f = new JFrame("Encode-Decode");
-        encode = new JButton("Encode");
-        decode = new JButton("Decode");
-        modAlpha = new JTextField();
-        inputText = new JTextField();
-        outputLabel = new JLabel();
-        l1 = new JLabel("Input a custom alphabet 26 characters in length here:");
-        l2 = new JLabel("Input the text to be encoded or decoded here:");
+    private JTextField modAlpha, inputText;
+    private JFrame f;
+    private JButton encode, decode;
+    private JLabel outputLabel, l1, l2;
+
+    /**
+     * Creates a new window to allow the user to encode or decode text
+     */
+    private Main() {
+        f = new JFrame("Encode-Decode"); //The window containing the program
+        encode = new JButton("Encode"); //The button to be pressed to encode the text
+        decode = new JButton("Decode"); //The button to be pressed to decode the text
+        modAlpha = new JTextField(); //The textbox to receive the modified alphabet
+        inputText = new JTextField(); //The textbox to receive the text to be encoded or decoded
+        outputLabel = new JLabel(); //The output label
+        l1 = new JLabel("Input a custom alphabet 26 characters in length here:"); //A label to indicate where to input the modified alphabet
+        l2 = new JLabel("Input the text to be encoded or decoded here:"); //A label to indicate where to input the text
 
         f.setSize(400,400);
         encode.setBounds(200, 200, 100, 30);
@@ -40,6 +50,11 @@ public class Main implements ActionListener {
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
+    /**
+     * This method will run when either of the buttons are pressed.
+     * Depending on the button pressed it will then either encode or decode the text in the inputText TextField
+     * @param e the event to be processed
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         String text = modAlpha.getText();
@@ -49,10 +64,10 @@ public class Main implements ActionListener {
             return;
         }
         char[] modifiedAlphabet = text.toCharArray();
-        //char[] alphabet = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',  'i',  'j',  'k',  'l',  'm',  'n',  'o',  'p',  'q',  'r',  's',  't',  'u',  'v',  'w',  'x',  'y',  'z'};
         char[] input = inputText.getText().toLowerCase().toCharArray();
         char[] temp = new char[input.length];
-        int counter = 0;
+
+
         String output = "";
         for (char c:
              input) {
@@ -68,8 +83,6 @@ public class Main implements ActionListener {
                         }
                     }
                 }
-
-                counter++;
             }
             else {
                 output = output + " ";
